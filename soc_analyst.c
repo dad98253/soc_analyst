@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
 
     // Invoke the secure local nfdump binary utility to extract text lines of your live IP traffic.
     // -A srcip groups the data neatly by device IP so we don't flood the system.
-    snprintf(cmd, sizeof(cmd), "/usr/bin/nfdump -r %s -A srcip", target_file);
+    snprintf(cmd, sizeof(cmd), "/usr/bin/nfdump -r %s -o \"fmt:%%ts %%td %%sa:%%sp -> %%da:%%dp %%pkt %%bps\"", target_file);
     
     fp = popen(cmd, "r");
     if (fp == NULL) {
