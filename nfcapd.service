@@ -1,13 +1,12 @@
 [Unit]
 Description=NetFlow Capture Daemon for SG-1000 Integration
-After=network.target soc_analyst.service
-Requires=soc_analyst.service
+After=network.target
 
 [Service]
 Type=simple
 User=root
 ExecStartPre=/bin/mkdir -p /var/cache/netflow
-ExecStart=/usr/bin/nfcapd -p 2055 -w /var/cache/netflow -m /var/tmp/netflow_metrics.sock -u netflow -e
+ExecStart=/usr/bin/nfcapd -p 2055 -w /var/cache/netflow -t 60 -u netflow -e -x "/usr/local/bin/soc_analyst -d 3 %f"
 Restart=always
 RestartSec=5
 
