@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=root
 ExecStartPre=/bin/mkdir -p /var/cache/netflow
-ExecStart=/usr/bin/nfcapd -p 2055 -w /var/cache/netflow -t 60 -u netflow -e -x "/usr/local/bin/soc_analyst -d 3 %f"
+ExecStart=/usr/bin/nfcapd -p 2055 -w /var/cache/netflow -t 60 -u netflow -x "/usr/local/bin/soc_analyst -d 3 %%d/%%f"
 Restart=always
 RestartSec=5
 
