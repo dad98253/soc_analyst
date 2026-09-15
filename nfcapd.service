@@ -7,7 +7,7 @@ Requires=soc_analyst.service
 Type=simple
 User=root
 ExecStartPre=/bin/mkdir -p /var/cache/netflow
-ExecStart=/usr/bin/nfcapd -p 2055 -w /var/cache/netflow -m /var/tmp/netflow_metrics.sock -u netflow -e 3d
+ExecStart=/usr/bin/nfcapd -p 2055 -w /var/cache/netflow -m /var/tmp/netflow_metrics.sock -u netflow -e
 Restart=always
 RestartSec=5
 
